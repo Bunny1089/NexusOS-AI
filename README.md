@@ -1,295 +1,306 @@
-# 🚀 NexusOS AI
+<p align="center">
+  <img src="images/banner.png" width="100%" alt="NexusOS AI Banner">
+</p>
 
-<div align="center">
+<h1 align="center">🚀 NexusOS AI</h1>
 
-### AI-Powered Academic & Career Operating System
+<h3 align="center">
+AI-Powered Academic & Career Operating System
+</h3>
 
-**Built with Google Agent Development Kit (ADK), Model Context Protocol (MCP), FastAPI, React, and Python**
+<p align="center">
+Built using <b>Google Agent Development Kit (ADK)</b>, <b>Model Context Protocol (MCP)</b>, <b>FastAPI</b>, <b>React</b>, and <b>Python</b>.
+</p>
+
+<p align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)
-![React](https://img.shields.io/badge/React-Frontend-61DAFB?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-Language-3178C6?logo=typescript)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript)
 ![Google ADK](https://img.shields.io/badge/Google-ADK-4285F4?logo=google)
 ![MCP](https://img.shields.io/badge/MCP-Integrated-success)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)
-![License](https://img.shields.io/badge/License-MIT-green)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker)
+![MIT License](https://img.shields.io/badge/License-MIT-green)
 
-</div>
+</p>
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-Students often rely on multiple disconnected tools for learning, planning, resumes, interviews, internships, and career preparation.
+Students today constantly switch between multiple disconnected platforms to manage learning, internships, resumes, interviews, schedules, and career preparation.
 
-**NexusOS AI** brings these workflows into a single intelligent platform powered by **Google ADK** and a **multi-agent architecture**. Instead of interacting with a single chatbot, users collaborate with specialized AI agents coordinated by a central orchestrator that intelligently routes each request.
+**NexusOS AI** combines all of these workflows into a single intelligent operating system powered by Google's **Agent Development Kit (ADK)** and **Model Context Protocol (MCP)**.
+
+Instead of relying on a single chatbot, NexusOS AI orchestrates multiple specialized AI agents capable of collaborating together to solve complex academic and career-related tasks.
+
+---
+
+# 🌟 Why NexusOS AI?
+
+Unlike traditional AI assistants, NexusOS AI provides:
+
+- 🤖 Multi-Agent Collaboration
+- 🎯 Intelligent Task Routing
+- 📚 Academic Planning
+- 💼 Career Guidance
+- 📄 Resume Analysis
+- 🎤 Interview Preparation
+- 📅 Scheduling
+- 📂 Document Management
+- 🔌 MCP Tool Integration
+- 📊 Analytics Dashboard
+
 ---
 
 # 📸 Application Showcase
 
-## 🏠 Landing Page
+(Add all your screenshots here)
+
+Landing
+
+Dashboard
+
+Workspace
+
+Study Centre
+
+Planner
+
+Resume Analyzer
+
+Career Hub
+
+Interview Coach
+
+Calendar
+
+Documents
+
+Exam Hub
+
+---
+
+# 🤖 Google ADK Multi-Agent Architecture
 
 <p align="center">
-  <img src="images/landing.png" alt="Landing Page" width="100%">
+<img src="images/multi-agent.png" width="100%">
 </p>
 
-The landing page introduces NexusOS AI and provides access to the complete Academic & Career Operating System.
+NexusOS AI is built using **Google Agent Development Kit (ADK)**.
 
----
+Every user request first reaches the **Coordinator Agent**, which performs:
 
-## 📊 Dashboard
+- Intent Understanding
+- Context Analysis
+- Agent Selection
+- Multi-Agent Coordination
+- Response Aggregation
 
-<p align="center">
-  <img src="images/dashboard.png" alt="Dashboard" width="100%">
-</p>
+The Coordinator dynamically invokes one or more specialist agents.
 
-The dashboard provides an overview of productivity metrics, AI insights, upcoming activities, and personalized recommendations.
+### Specialist Agents
 
----
+| Agent | Purpose |
+|-------|----------|
+| 📅 Planner Agent | Weekly Planner |
+| 📚 Study Agent | Study Plans |
+| 📄 Resume Agent | Resume Review |
+| 💼 Career Agent | Career Roadmaps |
+| 🎤 Interview Agent | Mock Interviews |
+| 🎯 Internship Agent | Internship Search |
+| ⏰ Life Scheduler | Time Management |
 
-## 🤖 AI Workspace
-
-<p align="center">
-  <img src="images/workspace.png" alt="AI Workspace" width="100%">
-</p>
-
-Interact with the AI Coordinator Agent to access all specialist agents from one unified interface.
-
----
-
-## 📚 Study Centre
-
-<p align="center">
-  <img src="images/study-centre.png" alt="Study Centre" width="100%">
-</p>
-
-Generate personalized study plans, revision schedules, and learning strategies.
-
----
-
-## 📅 Planner
-
-<p align="center">
-  <img src="images/planner.png" alt="Planner" width="100%">
-</p>
-
-Create weekly study plans and manage daily academic tasks efficiently.
-
----
-
-## 📄 Resume Analyzer
-
-<p align="center">
-  <img src="images/resume-analyser.png" alt="Resume Analyzer" width="100%">
-</p>
-
-Receive AI-powered resume reviews with actionable improvement suggestions.
-
----
-
-## 💼 Career Hub
-
-<p align="center">
-  <img src="images/career-hub.png" alt="Career Hub" width="100%">
-</p>
-
-Discover career roadmaps, required skills, and personalized guidance.
-
----
-
-## 🎤 Interview Coach
-
-<p align="center">
-  <img src="images/interview-coach.png" alt="Interview Coach" width="100%">
-</p>
-
-Practice technical and HR interview questions with instant AI feedback.
-
----
-
-## 📅 Calendar
-
-<p align="center">
-  <img src="images/calendar.png" alt="Calendar" width="100%">
-</p>
-
-Manage schedules, deadlines, and important academic events.
-
----
-
-## 📂 Document Manager
-
-<p align="center">
-  <img src="images/documents.png" alt="Documents" width="100%">
-</p>
-
-Organize and access academic documents using integrated AI assistance.
-
----
-
-## 📝 Exam Hub
-
-<p align="center">
-  <img src="images/exam-hub.png" alt="Exam Hub" width="100%">
-</p>
-
-Track examinations, revision progress, and upcoming assessments.
-
----
----
-
-## ✨ Key Features
-
-- 🤖 Google ADK-powered Multi-Agent System
-- 🧠 Intelligent Coordinator Agent
-- 📚 AI Study Planning
-- 📅 Weekly Planner
-- 📄 Resume Analysis
-- 💼 Career Guidance
-- 🎤 Interview Preparation
-- 🎯 Internship Assistance
-- ⏰ Life Scheduler
-- 🔌 MCP Tool Integration
-- 📂 Document Search
-- 📅 Calendar Management
-- 📊 Analytics Dashboard
-- ⚡ FastAPI Backend
-- 🎨 React + TypeScript Frontend
-- 💾 SQLite Persistence
-- 🐳 Docker Support
+This modular architecture enables scalability, maintainability, and easy addition of future AI agents.
 
 ---
 
 # 🏗 System Architecture
 
+<p align="center">
+<img src="images/architecture.png" width="100%">
+</p>
+
+### Architecture Flow
+
 ```
-                 React Frontend
-                        │
-                        ▼
-                FastAPI Backend
-                        │
-                        ▼
-         Google ADK Coordinator Agent
-                        │
-      ┌────────┬────────┬────────┐
-      ▼        ▼        ▼        ▼
- Planner  Resume  Career  Study
-      │        │        │
-      └────────┴────────┘
-               │
-               ▼
-        MCP Tool Registry
-               │
- ┌────────┬────────┬────────┬────────┐
- ▼        ▼        ▼        ▼
-Calendar Documents Search GitHub
-               │
-               ▼
-         SQLite Database
+User
+   │
+React Frontend
+   │
+FastAPI Backend
+   │
+Google ADK Coordinator
+   │
+Specialist Agents
+   │
+MCP Registry
+   │
+External Services
+   │
+SQLite Database
 ```
 
----
-
-# 🤖 Multi-Agent Architecture
-
-Every user request is first handled by the **Coordinator Agent**, built using **Google Agent Development Kit (ADK)**.
-
-The coordinator analyzes user intent and dynamically routes the request to one or more specialist agents.
-
-### Specialist Agents
-
-| Agent | Responsibility |
-|---------|----------------|
-| 📅 Planner Agent | Weekly Planning |
-| 📚 Study Agent | Exam Preparation |
-| 📄 Resume Agent | Resume Review |
-| 💼 Career Agent | Career Guidance |
-| 🎤 Interview Agent | Interview Coaching |
-| 🎯 Internship Agent | Internship Search |
-| ⏰ Life Scheduler | Time Management |
+The React frontend communicates with the FastAPI backend, which delegates requests to the Google ADK Coordinator Agent. The Coordinator orchestrates specialist agents, securely accesses external tools through MCP, and returns structured responses.
 
 ---
 
-# 🔌 MCP Integration
+# 🔌 MCP Workflow
 
-NexusOS AI integrates the **Model Context Protocol (MCP)** to securely communicate with external tools.
+<p align="center">
+<img src="images/mcp-workflow.png" width="100%">
+</p>
 
-Current MCP services include:
+NexusOS AI integrates the **Model Context Protocol (MCP)** to standardize communication with external services.
 
-- 📅 Calendar
-- 📂 Documents
-- 🔍 Search
-- 💻 GitHub
+Current MCP Servers:
 
-Rather than allowing agents to directly communicate with services, every interaction passes through a centralized **MCP Tool Registry**, making the system modular and extensible.
+- 📅 Calendar Server
+- 📂 Document Server
+- 🔍 Search Server
+- 💻 GitHub Server
+
+Instead of allowing agents to directly access APIs, every interaction passes through the MCP Tool Registry, providing:
+
+- Secure Tool Invocation
+- Standardized Interfaces
+- Modular Integrations
+- Easy Future Expansion
 
 ---
 
-# 🔒 Security
+# ⚙️ End-to-End Request Flow
 
-The project includes multiple security mechanisms:
+```
+User Prompt
+      │
+      ▼
+React Dashboard
+      │
+      ▼
+FastAPI API
+      │
+      ▼
+Coordinator Agent (Google ADK)
+      │
+      ├───────────────┐
+      ▼               ▼
+Study Agent      Resume Agent
+Career Agent     Planner Agent
+Interview Agent  Internship Agent
+Life Scheduler
+      │
+      ▼
+MCP Registry
+      │
+      ▼
+External Services
+      │
+      ▼
+Response Aggregation
+      │
+      ▼
+User Dashboard
+```
 
-- Prompt Validation
-- Input Sanitization
-- Safe MCP Tool Execution
-- Error Handling
-- Environment Variable Support
+---
+
+# ✨ Features
+
+- Google ADK Multi-Agent Architecture
+- Coordinator Agent
+- MCP Tool Registry
+- Academic Planning
+- Weekly Study Planner
+- Resume Analysis
+- Career Guidance
+- Interview Coaching
+- Internship Assistance
+- Calendar Integration
+- Document Management
+- Analytics Dashboard
 - Secure Agent Routing
+- Docker Deployment
 
 ---
 
 # 🛠 Tech Stack
 
-### Backend
+## Backend
 
 - Python
 - FastAPI
 - Google ADK
 - SQLite
 
-### Frontend
+## Frontend
 
 - React
 - TypeScript
 - Tailwind CSS
 - Vite
 
-### AI
+## AI
 
 - Google Gemini
 - Google ADK
 - MCP
 
-### DevOps
+## DevOps
 
 - Docker
 - Docker Compose
 
 ---
 
-# 🚀 Getting Started
+# 📂 Project Structure
 
-## Clone Repository
+```text
+backend/
+├── app/
+│   ├── agents/
+│   ├── api/
+│   ├── core/
+│   ├── db/
+│   ├── mcp/
+│   ├── services/
+│   └── skills/
+
+frontend/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── stores/
+
+images/
+
+README.md
+docker-compose.yml
+```
+
+---
+
+# 🚀 Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/NexusOS-AI.git
+git clone https://github.com/Bunny1089/NexusOS-AI.git
+
 cd NexusOS-AI
 ```
 
-## Configure Environment
+Create environment file
 
 ```bash
 cp .env.example .env
 ```
 
-Add your Google Gemini API Key.
+Add
 
 ```
 GOOGLE_API_KEY=YOUR_KEY
 ```
-
-## Install Dependencies
 
 Backend
 
@@ -304,15 +315,15 @@ cd frontend
 npm install
 ```
 
----
+Run
 
-## Run Backend
+Backend
 
 ```bash
 python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --app-dir backend
 ```
 
-## Run Frontend
+Frontend
 
 ```bash
 npm run dev
@@ -320,7 +331,7 @@ npm run dev
 
 ---
 
-## Docker
+# 🐳 Docker
 
 ```bash
 docker compose up --build
@@ -328,36 +339,26 @@ docker compose up --build
 
 ---
 
-# 📂 Project Structure
+# 🔒 Security
 
-```
-backend/
-    app/
-        agents/
-        api/
-        mcp/
-        skills/
-        services/
-        db/
-
-frontend/
-    src/
-        pages/
-        components/
-        services/
-```
+- Prompt Validation
+- Input Sanitization
+- MCP Tool Validation
+- Secure Agent Routing
+- Environment Variables
+- Exception Handling
 
 ---
 
 # 🎯 Future Roadmap
 
-- Voice Assistant
+- Voice AI Assistant
 - Mobile App
 - LMS Integration
-- Multi-modal Learning
 - Cloud Deployment
-- Team Collaboration
-- Additional MCP Tools
+- Multi-modal Learning
+- Additional MCP Servers
+- Multi-user Collaboration
 
 ---
 
@@ -371,4 +372,4 @@ Built for the **Kaggle AI Agents: Intensive Vibe Coding Capstone Project (2026)*
 
 # 📜 License
 
-This project is licensed under the MIT License.
+Licensed under the **MIT License**.
