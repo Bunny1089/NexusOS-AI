@@ -24,7 +24,119 @@
 Students often rely on multiple disconnected tools for learning, planning, resumes, interviews, internships, and career preparation.
 
 **NexusOS AI** brings these workflows into a single intelligent platform powered by **Google ADK** and a **multi-agent architecture**. Instead of interacting with a single chatbot, users collaborate with specialized AI agents coordinated by a central orchestrator that intelligently routes each request.
+---
 
+# 📸 Application Showcase
+
+## 🏠 Landing Page
+
+<p align="center">
+  <img src="images/landing.png" alt="Landing Page" width="100%">
+</p>
+
+The landing page introduces NexusOS AI and provides access to the complete Academic & Career Operating System.
+
+---
+
+## 📊 Dashboard
+
+<p align="center">
+  <img src="images/dashboard.png" alt="Dashboard" width="100%">
+</p>
+
+The dashboard provides an overview of productivity metrics, AI insights, upcoming activities, and personalized recommendations.
+
+---
+
+## 🤖 AI Workspace
+
+<p align="center">
+  <img src="images/workspace.png" alt="AI Workspace" width="100%">
+</p>
+
+Interact with the AI Coordinator Agent to access all specialist agents from one unified interface.
+
+---
+
+## 📚 Study Centre
+
+<p align="center">
+  <img src="images/study-centre.png" alt="Study Centre" width="100%">
+</p>
+
+Generate personalized study plans, revision schedules, and learning strategies.
+
+---
+
+## 📅 Planner
+
+<p align="center">
+  <img src="images/planner.png" alt="Planner" width="100%">
+</p>
+
+Create weekly study plans and manage daily academic tasks efficiently.
+
+---
+
+## 📄 Resume Analyzer
+
+<p align="center">
+  <img src="images/resume-analyser.png" alt="Resume Analyzer" width="100%">
+</p>
+
+Receive AI-powered resume reviews with actionable improvement suggestions.
+
+---
+
+## 💼 Career Hub
+
+<p align="center">
+  <img src="images/career-hub.png" alt="Career Hub" width="100%">
+</p>
+
+Discover career roadmaps, required skills, and personalized guidance.
+
+---
+
+## 🎤 Interview Coach
+
+<p align="center">
+  <img src="images/interview-coach.png" alt="Interview Coach" width="100%">
+</p>
+
+Practice technical and HR interview questions with instant AI feedback.
+
+---
+
+## 📅 Calendar
+
+<p align="center">
+  <img src="images/calendar.png" alt="Calendar" width="100%">
+</p>
+
+Manage schedules, deadlines, and important academic events.
+
+---
+
+## 📂 Document Manager
+
+<p align="center">
+  <img src="images/documents.png" alt="Documents" width="100%">
+</p>
+
+Organize and access academic documents using integrated AI assistance.
+
+---
+
+## 📝 Exam Hub
+
+<p align="center">
+  <img src="images/exam-hub.png" alt="Exam Hub" width="100%">
+</p>
+
+Track examinations, revision progress, and upcoming assessments.
+
+---
 ---
 
 ## ✨ Key Features
