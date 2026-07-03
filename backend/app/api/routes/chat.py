@@ -1,6 +1,9 @@
+import logging
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-import logging
+
+from app.core.security import validate_prompt, validate_user_id
 from app.services.ai_service import AIService
 
 logger = logging.getLogger(__name__)
@@ -17,8 +20,10 @@ class ChatResponse(BaseModel):
 @router.post("", response_model=ChatResponse)
 def chat(request: ChatRequest):
     try:
+        user_id = validate_user_id(request.user_id)
+        message = validate_prompt(request.message)
         ai = AIService()
-        reply = ai.chat(request.user_id, request.message)
+        reply = ai.chat(user_id, message)
         return {"reply": reply}
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))

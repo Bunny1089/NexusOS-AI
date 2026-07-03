@@ -1,11 +1,42 @@
 from typing import List, Dict, Any
+from pydantic import ConfigDict
+from google.adk.agents.base_agent import BaseAgent
+
 from app.agents.adk_agent import AdkAgent
 from app.services.activity_log import activity_log_service
 
 
-class CoordinatorAgent:
+class AdkWrapperAgent(BaseAgent):
+    model_config = ConfigDict(arbitrary_types_allowed=True, extra='allow')
+
+    def __init__(self, delegate: AdkAgent):
+        super().__init__(
+            name=delegate.get_name(),
+            description=delegate.instructions or f"Specialist agent for {delegate.get_name()}",
+        )
+        self.delegate = delegate
+        self.instructions = delegate.instructions
+        self.responsibilities = delegate.responsibilities
+        self.tools = delegate.tools
+
+    async def _run_impl(self, *, ctx, node_input):
+        payload = node_input if isinstance(node_input, dict) else {}
+        user_id = payload.get("user_id", "student-1")
+        agent_payload = payload.get("payload", payload)
+        result = self.delegate.execute(user_id, agent_payload)
+        yield {"agent": self.name, "result": result}
+
+
+class CoordinatorAgent(BaseAgent):
+    model_config = ConfigDict(arbitrary_types_allowed=True, extra='allow')
+
     def __init__(self):
+        super().__init__(
+            name="coordinator",
+            description="Routes requests to specialist agents using a lightweight Google ADK graph.",
+        )
         self.agents: Dict[str, AdkAgent] = {}
+        self.adk_agents: Dict[str, AdkWrapperAgent] = {}
         self._register_default_agents()
 
     def _register_default_agents(self) -> None:
@@ -30,6 +61,7 @@ class CoordinatorAgent:
 
     def register_agent(self, agent: AdkAgent) -> None:
         self.agents[agent.get_name()] = agent
+        self.adk_agents[agent.get_name()] = AdkWrapperAgent(agent)
 
     def detect_intent(self, payload: Dict[str, Any]) -> List[str]:
         text = payload.get("request_text", "").lower()
@@ -87,6 +119,13 @@ class CoordinatorAgent:
 
         return " ".join(summary_parts)
 
+    async def _run_impl(self, *, ctx, node_input):
+        payload = node_input if isinstance(node_input, dict) else {}
+        user_id = payload.get("user_id", "student-1")
+        agent_payload = payload.get("payload", payload)
+        result = self.execute(user_id, agent_payload)
+        yield result
+
     def execute(self, user_id: str, payload: dict) -> dict:
         requested_agents = payload.get("agents")
         if isinstance(requested_agents, list) and requested_agents:
@@ -94,6 +133,7 @@ class CoordinatorAgent:
         else:
             selected_agents = self.detect_intent(payload)
 
+        selected_agents = list(dict.fromkeys(selected_agents))
         responses: Dict[str, Any] = {}
         used_agents: List[str] = []
 
@@ -102,7 +142,7 @@ class CoordinatorAgent:
             "coordinator",
             "started",
             "orchestrate",
-            f"Starting orchestration for request: {payload.get('request_text', '')}",
+            f"Starting ADK orchestration for request: {payload.get('request_text', '')}",
         )
 
         for agent_name in selected_agents:
@@ -128,6 +168,8 @@ class CoordinatorAgent:
 
             try:
                 agent_response = agent.execute(user_id, payload)
+                if isinstance(agent_response, dict) and "agent" not in agent_response:
+                    agent_response = {"agent": agent_name, **agent_response}
                 responses[agent_name] = agent_response
                 activity_log_service.record_event(
                     user_id,
@@ -160,4 +202,18 @@ class CoordinatorAgent:
             "agents": used_agents,
             "responses": responses,
             "summary": combined_summary,
+            "adk": {
+                "coordinator": self.name,
+                "registered_agents": list(self.adk_agents.keys()),
+            },
         }
+
+
+_coordinator_instance: CoordinatorAgent | None = None
+
+
+def get_coordinator() -> CoordinatorAgent:
+    global _coordinator_instance
+    if _coordinator_instance is None:
+        _coordinator_instance = CoordinatorAgent()
+    return _coordinator_instance

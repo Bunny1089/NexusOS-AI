@@ -1,20 +1,44 @@
+# ==========================
 # Python
+# ==========================
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
-*.env
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Environment Variables
+.env
 .env.*
+!.env.example
+
+# Database
+*.db
+*.sqlite
 *.sqlite3
 
+# ==========================
 # Node
+# ==========================
 node_modules/
 dist/
 build/
-.env.local
+coverage/
 
-# VS Code
+# IDE
 .vscode/
+.idea/
+
+# AI Tools
+.continue/
+.qodo/
 
 # OS
 .DS_Store

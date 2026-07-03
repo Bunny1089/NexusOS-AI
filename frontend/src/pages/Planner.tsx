@@ -1,40 +1,221 @@
-import PageHeader from '../components/PageHeader'
-
-const tasks = [
-  { title: 'Build exam timeline', due: 'Today', status: 'In progress' },
-  { title: 'Review resume keywords', due: 'Tomorrow', status: 'Planned' },
-  { title: 'Apply to internship roles', due: 'Next week', status: 'Ready' },
-]
+import { useEffect, useState } from "react";
+import PageHeader from "../components/PageHeader";
+import { getPlannerPlan } from "../services/api";
 
 function Planner() {
+  const [tasks, setTasks] = useState<
+    Array<{ task: string; status: string; deadline?: string }>
+  >([]);
+
+  const [focusArea, setFocusArea] = useState("");
+  const [timeline, setTimeline] = useState<
+    Array<{ day: string; schedule: string }>
+  >([]);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const [goal, setGoal] = useState("Capstone Project");
+  const [duration, setDuration] = useState("1 Week");
+
+  const loadPlanner = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const payload = await getPlannerPlan();
+
+      const plan = payload?.plan ?? {};
+
+      const normalizedTasks = Array.isArray(payload?.tasks)
+        ? payload.tasks.map((item: any) => ({
+            task: item.task ?? item.title ?? "Task",
+            status: item.status ?? "Planned",
+            deadline: item.deadline ?? item.due ?? "",
+          }))
+        : [
+            {
+              task: `Complete ${goal}`,
+              status: "Ready",
+              deadline: duration,
+            },
+            {
+              task: "Review progress",
+              status: "In Progress",
+              deadline: duration,
+            },
+            {
+              task: "Final revision",
+              status: "Pending",
+              deadline: duration,
+            },
+          ];
+
+      setTasks(normalizedTasks);
+
+      setFocusArea(
+        plan.focus_area ??
+          plan.focusArea ??
+          `${goal} (${duration})`
+      );
+
+      setTimeline(
+        Array.isArray(plan.timeline)
+          ? plan.timeline
+          : [
+              {
+                day: "Monday",
+                schedule: "Study fundamentals",
+              },
+              {
+                day: "Wednesday",
+                schedule: "Practice implementation",
+              },
+              {
+                day: "Friday",
+                schedule: "Revision & testing",
+              },
+            ]
+      );
+    } catch (err: any) {
+      setError(err?.message ?? "Unable to load planner");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadPlanner();
+  }, []);
+
   return (
     <div className="space-y-8">
-      <PageHeader title="Planner" description="Organize tasks, milestones, and study sprints with AI-assisted clarity." />
+      <PageHeader
+        title="Planner"
+        description="Organize tasks, milestones, and study sprints with AI-assisted clarity."
+      />
 
-      <div className="grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">
-        <div className="rounded-[28px] border border-slate-800 bg-slate-950/90 p-6 shadow-xl shadow-slate-950/40">
-          <h2 className="text-xl font-semibold text-white">Priority tasks</h2>
-          <div className="mt-6 space-y-4">
-            {tasks.map((task) => (
-              <div key={task.title} className="rounded-3xl border border-slate-800 bg-slate-900/80 p-4">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">{task.title}</h3>
-                    <p className="mt-1 text-sm text-slate-400">Due {task.due}</p>
-                  </div>
-                  <span className="rounded-full bg-slate-800 px-3 py-1 text-sm text-slate-300">{task.status}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="rounded-[28px] border border-slate-800 bg-slate-950/90 p-6 shadow-xl shadow-slate-950/40">
-          <h2 className="text-xl font-semibold text-white">Sprint overview</h2>
-          <p className="mt-4 text-slate-400">Plan weekly study blocks, set exam preparation goals, and keep your career tasks aligned.</p>
+      {/* Planner Controls */}
+
+      <div className="rounded-3xl border border-slate-800 bg-slate-950/80 p-5">
+        <div className="flex flex-wrap gap-4">
+
+          <select
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+            className="rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-white"
+          >
+            <option>Capstone Project</option>
+            <option>Interview Preparation</option>
+            <option>AI/ML Learning</option>
+            <option>Resume Improvement</option>
+          </select>
+
+          <select
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+            className="rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-white"
+          >
+            <option>3 Days</option>
+            <option>1 Week</option>
+            <option>2 Weeks</option>
+            <option>1 Month</option>
+          </select>
+
+          <button
+            onClick={loadPlanner}
+            className="rounded-xl bg-cyan-600 px-5 py-2 font-semibold text-white transition hover:bg-cyan-500"
+          >
+            Generate Plan
+          </button>
+
         </div>
       </div>
+
+      <div className="grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">
+
+        {/* Priority Tasks */}
+
+        <div className="rounded-[28px] border border-slate-800 bg-slate-950/90 p-6 shadow-xl shadow-slate-950/40">
+          <h2 className="text-xl font-semibold text-white">
+            Priority Tasks
+          </h2>
+
+          <div className="mt-6 space-y-4">
+
+            {loading && (
+              <p className="text-slate-400">Generating AI plan...</p>
+            )}
+
+            {!loading &&
+              tasks.map((task) => (
+                <div
+                  key={task.task}
+                  className="rounded-3xl border border-slate-800 bg-slate-900/80 p-4"
+                >
+                  <div className="flex items-center justify-between">
+
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">
+                        {task.task}
+                      </h3>
+
+                      <p className="mt-1 text-sm text-slate-400">
+                        {task.deadline
+                          ? `Deadline: ${task.deadline}`
+                          : "Generated by Planner Agent"}
+                      </p>
+                    </div>
+
+                    <span className="rounded-full bg-slate-800 px-3 py-1 text-sm text-slate-300">
+                      {task.status}
+                    </span>
+
+                  </div>
+                </div>
+              ))}
+
+          </div>
+        </div>
+
+        {/* Sprint Overview */}
+
+        <div className="rounded-[28px] border border-slate-800 bg-slate-950/90 p-6 shadow-xl shadow-slate-950/40">
+          <h2 className="text-xl font-semibold text-white">
+            Sprint Overview
+          </h2>
+
+          {error && (
+            <p className="mt-4 text-sm text-rose-400">{error}</p>
+          )}
+
+          <p className="mt-4 text-slate-400">
+            Focus Area: {focusArea}
+          </p>
+
+          <div className="mt-6 space-y-3">
+
+            {timeline.map((item) => (
+              <div
+                key={item.day}
+                className="rounded-2xl bg-slate-900/80 p-4"
+              >
+                <p className="text-sm font-semibold text-white">
+                  {item.day}
+                </p>
+
+                <p className="mt-1 text-sm text-slate-400">
+                  {item.schedule}
+                </p>
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+      </div>
     </div>
-  )
+  );
 }
 
-export default Planner
+export default Planner;

@@ -1,55 +1,262 @@
-# NexusOS AI – Personal Academic & Career Operating System
+# 🚀 NexusOS AI
 
-## Overview
-NexusOS AI is a modular full-stack platform for academic and career support. It features AI-powered planning, study tracking, calendar scheduling, resume review, internship search, and interview coaching.
+<div align="center">
 
-## Architecture
-- Frontend: React + Vite + Tailwind CSS
-- Backend: FastAPI with agent orchestration and MCP support
-- AI: Gemini-style integration via backend service wrapper
+### AI-Powered Academic & Career Operating System
 
-## Folder structure
-- `frontend/`: React app and UI
-- `backend/`: FastAPI backend, agents, skills, MCP servers
-- `.env.example`: environment variable template
+**Built with Google Agent Development Kit (ADK), Model Context Protocol (MCP), FastAPI, React, and Python**
 
-## Run locally
-1. Install backend dependencies
-   - `python -m pip install -r backend/requirements.txt`
-2. Install frontend dependencies
-   - `cd frontend && npm install`
-3. Start backend
-   - `cd backend && python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000`
-   - or from the repo root: `python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --app-dir backend`
-4. Start frontend
-   - `cd frontend && npm run dev -- --host 0.0.0.0 --port 3000`
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-Language-3178C6?logo=typescript)
+![Google ADK](https://img.shields.io/badge/Google-ADK-4285F4?logo=google)
+![MCP](https://img.shields.io/badge/MCP-Integrated-success)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## Environment
-Create `.env` from `.env.example` and set values for:
-- `AI_API_KEY`
-- `FRONTEND_URL=http://localhost:3000`
+</div>
 
-### Optional
-- `APP_ENV=development`
-- `BACKEND_HOST=127.0.0.1`
-- `BACKEND_PORT=8000`
+---
 
-## Notes
-This is a starter implementation for NexusOS AI. It includes core architecture, sample endpoints, and a modern dashboard layout.
+## 📖 Overview
 
-## Quick start
-1. Copy `.env.example` to `.env` and fill in `AI_API_KEY`.
-2. From the repo root:
-   - `python -m pip install -r backend/requirements.txt`
-   - `npm install --prefix frontend`
-3. Run backend:
-   - `python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000`
-4. Run frontend:
-   - `npm run dev --prefix frontend -- --host 0.0.0.0 --port 3000`
+Students often rely on multiple disconnected tools for learning, planning, resumes, interviews, internships, and career preparation.
 
-## One-command startup
-If you have `npm` installed, run:
-- `npm install`
-- `npm run start`
+**NexusOS AI** brings these workflows into a single intelligent platform powered by **Google ADK** and a **multi-agent architecture**. Instead of interacting with a single chatbot, users collaborate with specialized AI agents coordinated by a central orchestrator that intelligently routes each request.
 
-Then open `http://localhost:3000` in your browser.
+---
+
+## ✨ Key Features
+
+- 🤖 Google ADK-powered Multi-Agent System
+- 🧠 Intelligent Coordinator Agent
+- 📚 AI Study Planning
+- 📅 Weekly Planner
+- 📄 Resume Analysis
+- 💼 Career Guidance
+- 🎤 Interview Preparation
+- 🎯 Internship Assistance
+- ⏰ Life Scheduler
+- 🔌 MCP Tool Integration
+- 📂 Document Search
+- 📅 Calendar Management
+- 📊 Analytics Dashboard
+- ⚡ FastAPI Backend
+- 🎨 React + TypeScript Frontend
+- 💾 SQLite Persistence
+- 🐳 Docker Support
+
+---
+
+# 🏗 System Architecture
+
+```
+                 React Frontend
+                        │
+                        ▼
+                FastAPI Backend
+                        │
+                        ▼
+         Google ADK Coordinator Agent
+                        │
+      ┌────────┬────────┬────────┐
+      ▼        ▼        ▼        ▼
+ Planner  Resume  Career  Study
+      │        │        │
+      └────────┴────────┘
+               │
+               ▼
+        MCP Tool Registry
+               │
+ ┌────────┬────────┬────────┬────────┐
+ ▼        ▼        ▼        ▼
+Calendar Documents Search GitHub
+               │
+               ▼
+         SQLite Database
+```
+
+---
+
+# 🤖 Multi-Agent Architecture
+
+Every user request is first handled by the **Coordinator Agent**, built using **Google Agent Development Kit (ADK)**.
+
+The coordinator analyzes user intent and dynamically routes the request to one or more specialist agents.
+
+### Specialist Agents
+
+| Agent | Responsibility |
+|---------|----------------|
+| 📅 Planner Agent | Weekly Planning |
+| 📚 Study Agent | Exam Preparation |
+| 📄 Resume Agent | Resume Review |
+| 💼 Career Agent | Career Guidance |
+| 🎤 Interview Agent | Interview Coaching |
+| 🎯 Internship Agent | Internship Search |
+| ⏰ Life Scheduler | Time Management |
+
+---
+
+# 🔌 MCP Integration
+
+NexusOS AI integrates the **Model Context Protocol (MCP)** to securely communicate with external tools.
+
+Current MCP services include:
+
+- 📅 Calendar
+- 📂 Documents
+- 🔍 Search
+- 💻 GitHub
+
+Rather than allowing agents to directly communicate with services, every interaction passes through a centralized **MCP Tool Registry**, making the system modular and extensible.
+
+---
+
+# 🔒 Security
+
+The project includes multiple security mechanisms:
+
+- Prompt Validation
+- Input Sanitization
+- Safe MCP Tool Execution
+- Error Handling
+- Environment Variable Support
+- Secure Agent Routing
+
+---
+
+# 🛠 Tech Stack
+
+### Backend
+
+- Python
+- FastAPI
+- Google ADK
+- SQLite
+
+### Frontend
+
+- React
+- TypeScript
+- Tailwind CSS
+- Vite
+
+### AI
+
+- Google Gemini
+- Google ADK
+- MCP
+
+### DevOps
+
+- Docker
+- Docker Compose
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/NexusOS-AI.git
+cd NexusOS-AI
+```
+
+## Configure Environment
+
+```bash
+cp .env.example .env
+```
+
+Add your Google Gemini API Key.
+
+```
+GOOGLE_API_KEY=YOUR_KEY
+```
+
+## Install Dependencies
+
+Backend
+
+```bash
+pip install -r backend/requirements.txt
+```
+
+Frontend
+
+```bash
+cd frontend
+npm install
+```
+
+---
+
+## Run Backend
+
+```bash
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --app-dir backend
+```
+
+## Run Frontend
+
+```bash
+npm run dev
+```
+
+---
+
+## Docker
+
+```bash
+docker compose up --build
+```
+
+---
+
+# 📂 Project Structure
+
+```
+backend/
+    app/
+        agents/
+        api/
+        mcp/
+        skills/
+        services/
+        db/
+
+frontend/
+    src/
+        pages/
+        components/
+        services/
+```
+
+---
+
+# 🎯 Future Roadmap
+
+- Voice Assistant
+- Mobile App
+- LMS Integration
+- Multi-modal Learning
+- Cloud Deployment
+- Team Collaboration
+- Additional MCP Tools
+
+---
+
+# 👨‍💻 Author
+
+**Kulmeet Singh Chauhan**
+
+Built for the **Kaggle AI Agents: Intensive Vibe Coding Capstone Project (2026)**
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.

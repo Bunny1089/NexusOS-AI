@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
-import { sendChat } from '../services/api'
+import { dispatchRequest, sendChat } from '../services/api'
+import { useAgentDataStore } from '../stores/agentDataStore'
 
 type Message = { role: 'user' | 'ai' | 'system'; text: string }
 
@@ -9,9 +10,9 @@ function ChatPanel() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const scrollRef = useRef<HTMLDivElement | null>(null)
+  const updateFromCoordinatorResponse = useAgentDataStore((state) => state.updateFromCoordinatorResponse)
 
   useEffect(() => {
-    // scroll to bottom when messages change
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
@@ -22,19 +23,21 @@ function ChatPanel() {
     if (!trimmed) return
     setError(null)
 
-    // append user message to history
     setMessages((m) => [...m, { role: 'user', text: trimmed }])
     setMessage('')
     setLoading(true)
-
-    // show a temporary typing indicator
     setMessages((m) => [...m, { role: 'system', text: 'NexusOS is thinking...' }])
 
     try {
-      const response = await sendChat({ user_id: 'student-1', message: trimmed })
-      const replyText = response?.reply ?? 'No reply from AI.'
+      const dispatchResult = await dispatchRequest({
+        user_id: 'student-1',
+        payload: { request_text: trimmed },
+      })
+      updateFromCoordinatorResponse(dispatchResult)
 
-      // remove the last system typing indicator and append AI reply
+      const chatResponse = await sendChat({ user_id: 'student-1', message: trimmed })
+      const replyText = chatResponse?.reply ?? dispatchResult?.summary ?? 'No reply from AI.'
+
       setMessages((m) => {
         const withoutTyping = m.filter((_, i) => i !== m.length - 1)
         return [...withoutTyping, { role: 'ai', text: replyText }]
@@ -92,7 +95,6 @@ function ChatPanel() {
           {error && <div className="text-sm text-rose-400">{error}</div>}
         </div>
 
-        {/* Last AI reply box kept to preserve existing UI */}
         {messages.filter((m) => m.role === 'ai').length > 0 && (
           <div className="mt-2 rounded-3xl bg-slate-950 p-4 text-slate-200 shadow-inner shadow-slate-900/40">
             <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">NexusOS AI Reply</h3>

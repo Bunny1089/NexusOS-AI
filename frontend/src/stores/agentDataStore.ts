@@ -48,7 +48,9 @@ export const useAgentDataStore = create<AgentDataState>((set) => ({
     const resumeScore = resume.score || 0
     const resumeHighlights = resume.highlights || []
     const careerRoadmap = career.interests ? `Roadmap built for ${career.interests.join(', ')}` : 'Career goals set'
-    const interviewReadiness = interview.tips || interview.coaching || 'Interview readiness suggestions are ready'
+    const interviewReadiness = Array.isArray(interview.tips)
+      ? interview.tips.join(' ')
+      : interview.tips || interview.coaching || 'Interview readiness suggestions are ready'
     const examTracker = study.plan ? 'Next exam milestones scheduled in your study plan.' : 'No exam plan yet'
 
     set({

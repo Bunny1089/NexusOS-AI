@@ -1,13 +1,36 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import PageHeader from '../components/PageHeader'
 import ActivityPanel from '../components/ActivityPanel'
 import ChatPanel from '../components/ChatPanel'
+import { getDashboard } from '../services/api'
 import { useAgentDataStore } from '../stores/agentDataStore'
 
 function Dashboard() {
   const agentResults = useAgentDataStore((state) => state.agentResults)
+  const setAgentResults = useAgentDataStore((state) => state.setAgentResults)
+
+  useEffect(() => {
+    const loadDashboard = async () => {
+      try {
+        const data = await getDashboard()
+        const metrics = data?.metrics ?? {}
+        setAgentResults({
+          todayTasks: metrics.today_tasks ?? [],
+          weeklyCompletion: metrics.weekly_completion ?? 0,
+          studyProgress: metrics.study_progress ?? 0,
+          resumeScore: metrics.resume_score ?? undefined,
+          internshipRecommendations: metrics.internship_recommendations ?? [],
+          coordinatorHealth: metrics.coordinator_status ?? 'Ready',
+          weeklyPlanner: metrics.summary || 'Planner output will appear after a coordinator request.',
+        })
+      } catch {
+        // Keep store defaults when dashboard API is unavailable.
+      }
+    }
+    loadDashboard()
+  }, [setAgentResults])
 
   const agentStats = useMemo(() => {
     const progress = agentResults.studyProgress ?? 58
@@ -189,6 +212,8 @@ function Dashboard() {
           </div>
         </motion.section>
       </div>
+
+      <ActivityPanel />
     </div>
   )
 }
