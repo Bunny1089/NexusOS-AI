@@ -166,35 +166,7 @@ Unlike traditional AI assistants, NexusOS AI provides:
 - 🔌 MCP Tool Integration
 - 📊 Analytics Dashboard
 
----
 
-# 📸 Application Showcase
-
-(Add all your screenshots here)
-
-Landing
-
-Dashboard
-
-Workspace
-
-Study Centre
-
-Planner
-
-Resume Analyzer
-
-Career Hub
-
-Interview Coach
-
-Calendar
-
-Documents
-
-Exam Hub
-
----
 
 # 🤖 Google ADK Multi-Agent Architecture
 
