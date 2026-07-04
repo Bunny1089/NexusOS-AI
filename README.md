@@ -1,5 +1,5 @@
 <p align="center">
- <img src="images/landing.png" width="150%" alt="Landing Page">
+ 
 </p>
 
 <h1 align="center">🚀 NexusOS AI</h1>
