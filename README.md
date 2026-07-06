@@ -88,19 +88,10 @@ Built with <strong>Google Agent Development Kit (ADK)</strong>, <strong>Google G
 <p align="center">
 
 <a href="https://www.youtube.com/watch?v=ok3tF8uhSPI">
-
-<img src="images/demo-thumbnail.png" width="85%" alt="NexusOS AI Demo"/>
-
+<img src="https://img.shields.io/badge/▶%20Watch-Demo-red?style=for-the-badge&logo=youtube">
 </a>
 
 </p>
-
-<p align="center">
-
-🎬 <b>Click the thumbnail above to watch the complete walkthrough of NexusOS AI.</b>
-
-</p>
-
 ### Demo Includes
 
 - 🤖 Google ADK Multi-Agent Orchestration
