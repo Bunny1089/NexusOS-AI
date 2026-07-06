@@ -418,7 +418,7 @@ Features include:
 # 🤖 Google ADK Multi-Agent Architecture
 
 <p align="center">
-<img src="images/multi-agent.png" width="100%">
+
 </p>
 
 ## Why Google ADK?
@@ -460,7 +460,7 @@ The modular nature of this architecture allows new AI agents to be added without
 # 🔌 Model Context Protocol (MCP)
 
 <p align="center">
-<img src="images/mcp-workflow.png" width="100%">
+
 </p>
 
 ## Why MCP?
@@ -494,7 +494,7 @@ This separation of responsibilities keeps the system clean, maintainable, and sc
 
 <p align="center">
 
-<img src="images/architecture.png" width="100%" alt="System Architecture">
+
 
 </p>
 
